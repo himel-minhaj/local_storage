@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
+// import 'package:sqflite/sqflite.dart';
+
 class CreateInsertScreen extends StatefulWidget {
   const CreateInsertScreen({super.key});
 
@@ -33,10 +35,9 @@ class _CreateInsertScreenState extends State<CreateInsertScreen> {
       version: 1,
       onCreate: (Database db, int version) async {
         await db.execute('''
-         CREATE TABLE students(
          id INTEGER PRIMARY KEY AUTOINCREMENT,
-         name TEXT ,
-         age INTEGER
+          name TEXT NOT NULL,
+          age INTEGER NOT NULL
          
          )
          ''');
@@ -70,9 +71,8 @@ class _CreateInsertScreenState extends State<CreateInsertScreen> {
           children: [
             ElevatedButton(
               onPressed: (){
-                setState(() {
-                  OpenDB;
-                });
+                print('hellow');
+                OpenDB();
               },
               child: const Text('1. Open database'),
             ),
